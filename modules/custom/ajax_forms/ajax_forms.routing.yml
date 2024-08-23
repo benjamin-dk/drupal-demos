@@ -1,0 +1,16 @@
+ajax_forms.open_modal_form:
+  path: '/open-modal-form'
+  defaults:
+    _title: 'Modal Form'
+    _controller: '\Drupal\ajax_forms\Controller\AjaxModalController::openModalForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+
+ajax_forms.ajax-modal-example:
+  path: '/ajax-modal-example'
+  defaults:
+    _form: 'Drupal\ajax_forms\Forms\OpenModalButton'
+    _title: 'Open modal button form'
+  requirements:
+    _permission: 'administer site configuration'

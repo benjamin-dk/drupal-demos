@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for ajax_forms module.
+ */
+function ajax_forms_preprocess_page(array &$variables) : void {
+	$variables['#attached']['library'][] = 'ajax_forms/ajax_forms';
+}

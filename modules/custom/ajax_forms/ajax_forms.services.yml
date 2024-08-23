@@ -1,0 +1,4 @@
+services:
+  ajax_forms.external_service:
+    class: Drupal\ajax_forms\ExternalService
+    arguments: ['@logger.factory']

@@ -1,0 +1,4 @@
+((Drupal, once) => {
+  alert('hey');
+}
+)

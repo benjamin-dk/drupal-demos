@@ -1,0 +1,5 @@
+name: 'ajax_forms'
+type: module
+description: 'Ajax forms'
+package: Custom
+core_version_requirement: ^10 || ^11

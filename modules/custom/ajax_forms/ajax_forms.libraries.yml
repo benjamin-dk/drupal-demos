@@ -1,0 +1,9 @@
+ajax_forms:
+  version: 1.x
+  js:
+    js/ajax_forms.js: {}
+  dependencies:
+    - core/ajax
+    - core/drupal.dialog #Required for dialogs
+    - core/jquery
+    - core/drupal.dialog.ajax
