@@ -55,12 +55,14 @@ class AjaxModal extends FormBase {
       '#weight' => -10,
     ];
 
-    if ( ! $form_state->has('some_value') ) {
-      $form_state->set('some_value', microtime(TRUE));
+    // This demonstrates how the current timestamp is NOT being stored
+    // across requests eg. if the form has errors.
+    if ( ! $form_state->has('timestamp') ) {
+      $form_state->set('timestamp', microtime(TRUE));
     }
 
     $form['debug'] = [
-      '#markup' => $form_state->get('some_value'),
+      '#markup' => $form_state->get('timestamp'),
       '#prefix' => '<pre>',
       '#suffix' => '</pre>',
     ];
@@ -74,6 +76,13 @@ class AjaxModal extends FormBase {
 
     $orders = $this->externalService->getCurrentOrders();
 
+    // @todo Here I would like to store the initial set of orders in the form
+    // storage.
+    // That way I can compare later and inform the user if the orders have
+    // changed while she had the form open.
+
+    // WIP This is just a simple way of displaying a varying number of checkboxes.
+    // Not representative of the intended functionality.
     for ( $i = 0; $i < $orders; $i++ ) {
       $option = (String) $i;
       $options[$option] = $option;
@@ -109,10 +118,17 @@ class AjaxModal extends FormBase {
 
     // If there are any form errors, AJAX replace the form.
     if ( $form_state->hasAnyErrors() ) {
-      $response->addCommand(new ReplaceCommand('#ajax_forms_ajax_modal_wrapper', $form));
+      $response->addCommand(
+        new ReplaceCommand('#ajax_forms_ajax_modal_wrapper', $form)
+      );
     }
     else {
-      $response->addCommand(new OpenModalDialogCommand("Success!", 'The modal form has been submitted.', ['width' => 700]));
+      $response->addCommand(
+        new OpenModalDialogCommand(
+          "Success!", 'The modal form has been submitted.',
+          ['width' => 700]
+        )
+      );
     }
 
     return $response;
@@ -123,24 +139,14 @@ class AjaxModal extends FormBase {
    * https://drupal.stackexchange.com/questions/215699/how-can-i-get-the-form-validated-with-ajax
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    //parent::validateForm($form, $form_state);
+    // Here I need to check if the current orders have changed, and if so I
+    // need to rebuild the form to reflect the new state.
   }
 
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-  }
-
-  /**
-   * Gets the configuration names that will be editable.
-   *
-   * @return array
-   *   An array of configuration object names that are editable if called in
-   *   conjunction with the trait's config() method.
-   */
-  protected function getEditableConfigNames() {
-    return ['config.ajax_forms_ajax_modal'];
   }
 
 }
