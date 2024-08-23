@@ -4,6 +4,7 @@ CONTENTS OF THIS FILE
  * Requirements
  * Installation
  * Background
+ * Relevant links
 
 INTRODUCTION
 ------------
@@ -26,5 +27,13 @@ this is to explore the best practice for displaying a form where the contents
 of the form (ie. checkbox options) is dynamic because it is defined by data
 from an external API.
 
-Relevant links:
+RELEVANT LINKS:
+Forum post that started it all:
 https://www.drupal.org/forum/support/module-development-and-code-questions/2024-08-20/the-specified-ajax-callback-is-empty-or-not-callable
+
+Some Drupal docs about Ajax Dialog Boxes:
+https://www.drupal.org/docs/develop/drupal-apis/ajax-api/ajax-dialog-boxes
+
+An issue that seems relevant to the current issue with the form storage not
+being persisted during requests / rebuilds of the form.
+https://www.drupal.org/project/drupal/issues/3189550
