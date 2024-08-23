@@ -37,3 +37,8 @@ https://www.drupal.org/docs/develop/drupal-apis/ajax-api/ajax-dialog-boxes
 An issue that seems relevant to the current issue with the form storage not
 being persisted during requests / rebuilds of the form.
 https://www.drupal.org/project/drupal/issues/3189550
+
+CREDITS
+-------------
+Based on the example from https://gist.github.com/edwardchan
+https://gist.github.com/edwardchan/2c2d4f8b340f1425a4902c05afa7ecc6
